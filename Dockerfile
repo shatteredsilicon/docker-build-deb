@@ -8,7 +8,7 @@ RUN \
 	echo 'deb http://deb.debian.org/debian bullseye-backports main' > /etc/apt/sources.list.d/bullseye-backports.list &&\
 	apt update && apt install -y golang-1.19 && \
 	rm /etc/apt/sources.list.d/bullseye-backports.list && \
-	apt update && apt install -y git rsync build-essential devscripts
+	apt update && apt install -y git rsync build-essential devscripts dh-systemd
 
 ENV GOPATH=/home/builder/go
 
