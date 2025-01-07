@@ -5,15 +5,15 @@ RUN \
 	chmod 755 /home/builder
 
 RUN \	
-	echo 'deb http://deb.debian.org/debian bullseye-backports main' > /etc/apt/sources.list.d/bullseye-backports.list &&\
-	apt update && apt install -y golang-1.19 && \
-	rm /etc/apt/sources.list.d/bullseye-backports.list && \
+	echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/bookworm-backports.list &&\
+	apt update && apt install -y golang-1.22 && \
+	rm /etc/apt/sources.list.d/bookworm-backports.list && \
 	apt update && apt install -y git rsync build-essential devscripts dh-systemd
 
 ENV GOPATH=/home/builder/go
 
-ENV GOROOT=/usr/lib/go-1.19
-ENV PATH=/usr/lib/go-1.19/bin:${GOPATH}/bin:$PATH
+ENV GOROOT=/usr/lib/go-1.22
+ENV PATH=/usr/lib/go-1.22/bin:${GOPATH}/bin:$PATH
 RUN chown -R builder:builder /home/builder
 
 USER root
