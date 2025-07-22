@@ -4,6 +4,9 @@ RUN \
 	useradd builder -u 1000 -m -G users && \
 	chmod 755 /home/builder
 
+# switch to archive repos
+COPY sources.list /etc/apt/sources.list
+
 RUN apt update && apt install -y curl
 RUN curl https://dl.shatteredsilicon.net/misc/DEBS/SS-misc-archive-keyring.pgp > /usr/share/keyrings/SS-misc-archive-keyring.pgp
 COPY ss-misc.list /etc/apt/sources.list.d/
